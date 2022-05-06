@@ -1,0 +1,8 @@
+{
+	"jedi": {
+		"enable": true,
+		"startupMessage": false,
+		"executable.command": "$HOME/.local/bin/jedi-language-server",
+		"jedi.jediSettings.autoImportModules": ["numpy", "pandas"]
+	}
+}

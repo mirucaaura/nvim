@@ -1,0 +1,98 @@
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+hook_add = '''
+set background=dark
+'''
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_post_source = '''
+call defx#custom#otion('_', {
+  \ 'winwidth': 40,
+  \ 'split': 'vertical',
+  \ 'direction': 'topleft',
+  \ 'show_ignored_files': 1,
+  \ 'buffer_name': 'exproler',
+  \ 'toggle': 1,
+  \ 'resume': 1,
+  \ 'columns': 'indent:icons:filename:mark',
+  \ })
+'''
+
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'iamcco/markdown-preview.nvim'
+on_ft = ['markdown', 'pandoc.markdown', 'rmd']
+build = 'sh -c "cd app && npm install"'
+hook_add = '''
+let g:mkdp_open_to_the_world = 1
+let g:mkdp_browser = 'chrome'
+let g:mkdp_filetypes = ['markdown']
+'''
+
+[[plugins]]
+repo = 'lambdalisue/fern.vim'
+hook_add = '''
+let g:fern#default_hidden=1
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=30<CR>
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+hook_add = '''
+	let g:fern#renderer = 'nerdfont'
+'''
+
+[[plugins]]
+repo = 'antoinemadec/FixCursorHold.nvim'
+
+[[plugins]]
+repo = 'lambdalisue/glyph-palette.vim'
+hook_add = '''
+	augroup my-glyph-palette
+		autocmd! *
+		autocmd FileType fern call glyph_palette#apply()
+		autocmd FileType nerdtree,startify call glyph_palette#apply()
+	augroup END
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'vim-python/python-syntax'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+hook_add = '''
+let g:lexima_enable_newline_rules = 1
+'''
+
+# language server
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+hook_add = '''
+let g:coc_global_extensions = ['coc-json', 'coc-toml']
+'''
+
+# git command
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+nnoremap <silent> gs :Git status<CR>
+nnoremap <silent> gps :Git push<CR>
+nnoremap <silent> gpl :Git pull<CR>
+nnoremap <silent> gc :Git commit<CR>
+'''

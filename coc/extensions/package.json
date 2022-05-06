@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "coc-jedi": ">=0.31.0",
+    "coc-json": ">=1.4.1",
+    "coc-toml": ">=1.2.5"
+  }
+}
