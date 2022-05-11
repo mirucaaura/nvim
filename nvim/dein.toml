@@ -5,6 +5,9 @@ set background=dark
 '''
 
 [[plugins]]
+repo = 'tomasiser/vim-code-dark'
+
+[[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_post_source = '''
 call defx#custom#otion('_', {
@@ -35,8 +38,32 @@ let g:mkdp_filetypes = ['markdown']
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
 hook_add = '''
-let g:fern#default_hidden=1
-nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=30<CR>
+" show hidden files
+let g:fern#default_hidden=1 
+nnoremap <C-n> :Fern . -reveal=% -drawer -width=30<CR>
+" <Leader> = Space
+let mapleader = "\<Space>"
+" Set Fern . as Space+e
+nnoremap <silent> <Leader>e :<C-u>Fern . -reveal=% -drawer<CR>
+'''
+
+[[plugins]]
+repo = 'lambdalisue/fern-hijack.vim'
+
+[[plugins]]
+repo = 'yuki-yano/fern-preview.vim'
+hook_add = '''
+function! s:fern_settings() abort
+  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
+  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
+  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
+  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+endfunction
+
+augroup fern-settings
+  autocmd!
+  autocmd FileType fern call s:fern_settings()
+augroup END
 '''
 
 [[plugins]]
@@ -94,5 +121,40 @@ hook_add = '''
 nnoremap <silent> gs :Git status<CR>
 nnoremap <silent> gps :Git push<CR>
 nnoremap <silent> gpl :Git pull<CR>
-nnoremap <silent> gc :Git commit<CR>
+" nnoremap <silent> gc :Git commit<CR>
 '''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+let g:airline_theme = 'codedark'
+let g:airline#extensions#default#layout = [
+  \ [ 'a', 'b', 'c' ],
+  \ ['z']
+  \ ]
+let g:airline_section_c = '%t %M'
+let g:airline_section_z = get(g:, 'airline_linecolumn_prefix', '').'%3l:%-2v'
+let g:airline#extensions#hunks#non_zero_only = 1 
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 1
+let g:airline#extensions#tabline#show_close_button = 0
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+let g:airline#extensions#tabline#enabled = 1
+'''
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
