@@ -95,9 +95,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'airblade/vim-gitgutter'
-
-[[plugins]]
 repo = 'vim-python/python-syntax'
 
 [[plugins]]
@@ -114,14 +111,16 @@ hook_add = '''
 let g:coc_global_extensions = ['coc-json', 'coc-toml']
 '''
 
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
 # git command
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 hook_add = '''
-nnoremap <silent> gs :Git status<CR>
-nnoremap <silent> gps :Git push<CR>
-nnoremap <silent> gpl :Git pull<CR>
-" nnoremap <silent> gc :Git commit<CR>
+let mapleader = "\<Space>"
+nnoremap <Leader>gs :Git status<CR>
+nnoremap <Leader>ga :Git add %:p<CR><CR>
 '''
 
 [[plugins]]
@@ -151,10 +150,35 @@ let g:airline#extensions#tabline#enabled = 1
 '''
 
 [[plugins]]
+repo = 'simeji/winresizer'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+hook_add = '''
+let $FZF_DEFAULT_OPTS="--layout=reverse"
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git/**'"
+let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height': 0.8,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' } }
+let mapleader = "\<Space>"
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>g :GFiles<CR>
+nnoremap <silent> <Leader>G :GFiles?<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>h :History<CR>
+nnoremap <silent> <Leader>r :Rg<CR>
+set rtp+=~/.fzf
+'''
+
+[[plugins]]
 repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
 
 [[plugins]]
 repo = 'tpope/vim-commentary'
